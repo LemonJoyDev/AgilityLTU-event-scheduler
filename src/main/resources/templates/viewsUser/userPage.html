@@ -1,0 +1,42 @@
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>agility | Users</title>
+    </head>
+    <body>
+    <div>
+        <a th:href="@{?lang=lt}">LT</a>
+        <a th:href="@{?lang=en}">EN</a>
+    </div>
+        <div th:object="${user}">
+            <div>
+                <span th:text="#{nameKey}"></span>
+                <span th:text="*{name}"></span>
+            </div>
+            <div>
+                <span th:text="#{surnameKey}"></span>
+                <span th:text="*{surname}"></span>
+            </div>
+            <div>
+                <span th:text="#{countryKey}"></span>
+                <span th:text="*{country}"></span>
+            </div>
+            <div>
+                <span th:text="#{cityKey}"></span>
+                <span th:text="*{city}"></span>
+            </div>
+            <div>
+                <span th:text="#{joinedAgilityYearKey}"></span>
+                <span th:text="*{joinedAgilityYear}"></span>
+            </div>
+            <div>
+                <span th:text="#{infoKey}"></span>
+                <span th:text="*{info}"></span>
+            </div>
+        </div>
+        <div>
+            <a th:href="@{/users}">Back to list</a>
+            <a th:href="@{/users/user/(id=${user.getId())}}">Add new dog</a>
+        </div>
+    </body>
+</html>

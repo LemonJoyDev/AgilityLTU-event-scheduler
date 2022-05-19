@@ -1,0 +1,18 @@
+styles.css<html xmlns:th="https://www.thymeleaf.org">
+    <head th:fragment="head(title)">
+        <title th:text="*{title}"></title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+    <body>
+        <div class="topnav" th:fragment="menu">
+            <a th:href="@{/public/home}">
+                <img class="logo" th:src="@{/images/Logo.jpg}"/>
+            </a>
+            <a class="active" th:href="@{viewsEvents/users}">Event list</a>
+            <a th:href="@{/users/register-user}">Register user</a>
+<!--            <a th:href="@{/private/cart}">Cart</a>-->
+            <a th:href="@{?lang=LT}">LT</a>
+            <a th:href="@{?lang=EN}">EN</a>
+        </div>
+    </body>
+</html>

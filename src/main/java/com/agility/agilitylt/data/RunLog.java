@@ -1,4 +1,4 @@
-package com.agility.agilitylt.repository.entity.data;
+package com.agility.agilitylt.data;
 
 import lombok.Data;
 

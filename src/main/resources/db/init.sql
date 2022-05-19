@@ -1,0 +1,29 @@
+--CREATE TABLE IF NOT EXISTS agilitydb.user (
+--    id INT AUTO_INCREMENT PRIMARY KEY,
+--    name VARCHAR(255) NOT NULL,
+--    surname VARCHAR(255) NOT NULL,
+--    country VARCHAR(255) NOT NULL,
+--    city VARCHAR(255) NOT NULL,
+--    phone_number VARCHAR(255) NOT NULL,
+--    email VARCHAR(255) NOT NULL,
+--    joined_agility_year INT,
+--    info VARCHAR(610),
+--    username VARCHAR(255),
+--    password VARCHAR(255)
+--
+--);
+--
+--CREATE TABLE IF NOT EXISTS agilitydb.dog (
+--    id INT AUTO_INCREMENT PRIMARY KEY,
+--    owner_name VARCHAR(255) NOT NULL,
+--    active_runner BOOLEAN,
+--    name VARCHAR(255) NOT NULL,
+--    breed VARCHAR(255) NOT NULL,
+--    birth_date DATE,
+--    vaccinated BOOLEAN,
+--    dog_size VARCHAR(255) NOT NULL,
+--    speed FLOAT,
+--    division VARCHAR(255) NOT NULL,
+--    clean_courses INT,
+--    info VARCHAR(610)
+--);

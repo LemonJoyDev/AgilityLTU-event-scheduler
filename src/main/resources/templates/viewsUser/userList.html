@@ -1,0 +1,26 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/fragmentsHeader :: head('agilty | Users user')">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<div th:replace="fragments/fragmentsHeader :: menu"></div>
+<div class="center">
+    <h1>Registered user list</h1>
+        <ul th:each="user: ${users}">
+            <li>
+                <a th:text="${user.getName()}" th:href="@{/users/{id}(id=${user.getId()})}"></a>
+            </li>
+        </ul>
+        <div>
+            <a th:href="@{/users(page=${currentPage - 1})}"> < </a>
+            <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">
+                <a th:href="@{/users(page=${page})}" th:text="${page + 1}"></a>
+            </span>
+            <a th:href="@{/users(page=${currentPage + 1})}"> > </a>
+        </div>
+        <div>
+            <a th:href="@{/users/register-user}">Register new user</a>
+        </div>
+    </div>
+</body>
+</html>

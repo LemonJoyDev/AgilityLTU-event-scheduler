@@ -1,0 +1,54 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>agility | Dogs</title>
+</head>
+<body>
+<div>
+    <a th:href="@{?lang=lt}">LT</a>
+    <a th:href="@{?lang=en}">EN</a>
+</div>
+<div th:object="${dog}">
+    <div>
+        <span th:text="#{ownerNameKey}"></span>
+        <span th:text="*{ownerName}"></span>
+    </div>
+    <div>
+        <span th:text="#{activeRunnerKey}"></span>
+        <span th:text="*{activeRunner}"></span>
+    </div>
+    <div>
+        <span th:text="#{nameKey}"></span>
+        <span th:text="*{name}"></span>
+    </div>
+    <div>
+        <span th:text="#{breedKey}"></span>
+        <span th:text="*{breed}"></span>
+    </div>
+    <div>
+        <span th:text="#{birthDateKey}"></span>
+        <span th:text="*{birthDate}"></span>
+    </div>
+    <div>
+        <span th:text="#{vaccinatedKey}"></span>
+        <span th:text="*{vaccinated}"></span>
+    </div>
+<!--    <div>-->
+<!--        <span th:text="#{vaccinatedKey}"></span>-->
+<!--        <span th:text="*{vaccinated}"></span>-->
+<!--    </div>    -->
+<!--    <div>-->
+<!--        <span th:text="#{vaccinatedKey}"></span>-->
+<!--        <span th:text="*{vaccinated}"></span>-->
+<!--    </div>    -->
+<!--    <div>-->
+<!--        <span th:text="#{vaccinatedKey}"></span>-->
+<!--        <span th:text="*{vaccinated}"></span>-->
+<!--    </div>-->
+</div>
+<div>
+    <a th:href="@{/users}">Back to list</a>
+    <a th:href="@{/users/user/(id=${users.getId())}}">Update product</a>
+</div>
+</body>
+</html>
