@@ -1,0 +1,21 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/fragmentsHeaderPrivate :: head('agilty | Home')"></head>
+<body>
+<div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
+<div class="center">
+    <h1>Welcome to agility world</h1>
+    <h2>Thanks for signing in</h2>
+
+    <div>
+        <a th:href="@{/private/register-handler}">Im a Handler!</a>
+        <a th:href="@{/private/register-club}">I have a club!</a>
+        <a th:href="@{/private/user/dogs/register-dog}">Create dog!</a>
+    </div>
+
+    <h3>To be developed</h3>
+    <div>
+        <a href="https://www.friskyradio.com/">Best radio ever</a>
+    </div>
+</div>
+</body>
+</html>

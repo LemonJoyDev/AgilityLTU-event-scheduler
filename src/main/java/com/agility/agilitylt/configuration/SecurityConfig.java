@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/login/**", "/public/**", "/logout/**").permitAll()
+                .antMatchers("/login/**", "/public/**", "/**/logout", "/user/**").permitAll()
                 .antMatchers("/private/**").authenticated()
                 .anyRequest().authenticated()
                 .and()
@@ -57,19 +57,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sameOrigin();
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//
-//        auth.userDetailsService(userService);
-//    }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user")
-                .password(passwordEncoder().encode("pass"))
-                .roles("USER");
+        auth.userDetailsService(userService);
     }
+
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("user")
+//                .password(passwordEncoder().encode("pass"))
+//                .roles("USER");
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() { return new BCryptPasswordEncoder(); }

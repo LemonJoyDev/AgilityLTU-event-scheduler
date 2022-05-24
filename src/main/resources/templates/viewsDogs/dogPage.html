@@ -1,54 +1,75 @@
 <html xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>agility | Dogs</title>
-</head>
+<head th:replace="fragments/fragmentsHeaderPrivate :: head('agilty | Doggy Page')"></head>
 <body>
-<div>
-    <a th:href="@{?lang=lt}">LT</a>
-    <a th:href="@{?lang=en}">EN</a>
-</div>
-<div th:object="${dog}">
-    <div>
-        <span th:text="#{ownerNameKey}"></span>
-        <span th:text="*{ownerName}"></span>
+<div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
+<div class="center">
+    <h1 th:text="#{dogPageWelcomeKey}"></h1>
+
+    <div th:object="${dog}">
+        <div class="dog-generic-info">
+            <div>
+                <h3 th:text="#{DogGenInfoKey}"></h3>
+            </div>
+            <div>
+                <span th:text="#{nameKey}"></span>
+                <span th:text="*{name}"></span>
+            </div>
+            <div>
+                <span th:text="#{breedKey}"></span>
+                <span th:text="*{breed}"></span>
+            </div>
+            <div>
+                <span th:text="#{birthDateKey}"></span>
+                <span th:text="*{birthDate}"></span>
+            </div>
+            <div>
+                <span th:text="#{vaccinatedKey}"></span>
+                <span th:text="*{vaccinated}"></span>
+            </div>
+
+        </div>
+        <div class="dog-professional-info">
+            <div>
+                <h3 th:text="#{DogProfInfoKey}"></h3>
+            </div>
+            <div>
+                <span th:text="#{activeRunnerKey}"></span>
+                <span th:text="*{activeRunner}"></span>
+            </div>
+            <div>
+                <span th:text="#{dogSizeKey}"></span>
+                <span th:text="*{dogSize}"></span>
+            </div>
+            <div>
+                <span th:text="#{divisionKey}"></span>
+                <span th:text="*{division}"></span>
+            </div>
+            <div>
+                <span th:text="#{cleanCoursesKey}"></span>
+                <span th:text="*{cleanCourses}"></span>
+            </div>
+        </div>
+
+        <div class="info">
+            <div>
+                <span th:text="#{infoKey}"></span>
+                <span th:text="*{info}"></span>
+            </div>
+        </div>
     </div>
+
+
+
     <div>
-        <span th:text="#{activeRunnerKey}"></span>
-        <span th:text="*{activeRunner}"></span>
+        <a th:href="@{/private/register-handler}">Im a Handler!</a>
+        <a th:href="@{/private/register-club}">I have a club!</a>
+        <a th:href="@{/private/user/dogs/register-dog}">Create dog!</a>
     </div>
+
+    <h3>To be developed</h3>
     <div>
-        <span th:text="#{nameKey}"></span>
-        <span th:text="*{name}"></span>
+        <a href="https://www.friskyradio.com/">Best radio ever</a>
     </div>
-    <div>
-        <span th:text="#{breedKey}"></span>
-        <span th:text="*{breed}"></span>
-    </div>
-    <div>
-        <span th:text="#{birthDateKey}"></span>
-        <span th:text="*{birthDate}"></span>
-    </div>
-    <div>
-        <span th:text="#{vaccinatedKey}"></span>
-        <span th:text="*{vaccinated}"></span>
-    </div>
-<!--    <div>-->
-<!--        <span th:text="#{vaccinatedKey}"></span>-->
-<!--        <span th:text="*{vaccinated}"></span>-->
-<!--    </div>    -->
-<!--    <div>-->
-<!--        <span th:text="#{vaccinatedKey}"></span>-->
-<!--        <span th:text="*{vaccinated}"></span>-->
-<!--    </div>    -->
-<!--    <div>-->
-<!--        <span th:text="#{vaccinatedKey}"></span>-->
-<!--        <span th:text="*{vaccinated}"></span>-->
-<!--    </div>-->
-</div>
-<div>
-    <a th:href="@{/users}">Back to list</a>
-    <a th:href="@{/users/user/(id=${users.getId())}}">Update product</a>
 </div>
 </body>
 </html>

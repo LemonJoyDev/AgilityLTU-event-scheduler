@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+styles.css<html xmlns:th="https://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <title th:text="*{title}"></title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-
+<div class="topnav" th:fragment="menu">
+    <a th:href="@{/private/home}">
+        <img class="logo" th:src="@{/images/Logo.jpg}"/>
+    </a>
+    <a class="active" th:href="@{/private/events}">Upcoming Events</a>
+    <a class="active" th:href="@{/private/events}">Create new Event</a>
+    <a th:href="@{/private/leader-board}">Leader board</a>
+    <a th:href="@{/private/dog-random}">I love dogs!</a>
+    <a th:href="@{/logout}">Sign out</a>
+    <a th:href="@{/contacts}">Contacts</a>
+    <a th:href="@{?lang=LT}">LT</a>
+    <a th:href="@{?lang=EN}">EN</a>
+</div>
 </body>
 </html>

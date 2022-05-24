@@ -8,9 +8,10 @@ styles.css<html xmlns:th="https://www.thymeleaf.org">
             <a th:href="@{/public/home}">
                 <img class="logo" th:src="@{/images/Logo.jpg}"/>
             </a>
-            <a class="active" th:href="@{viewsEvents/users}">Event list</a>
-            <a th:href="@{/users/register-user}">Register user</a>
-<!--            <a th:href="@{/private/cart}">Cart</a>-->
+            <a th:href="@{/public/events}">Upcoming Events</a>
+            <a class="active" th:href="@{/public/register-for-event}">Sign up for Event</a>
+            <a th:href="@{/user/register-user}">Register</a>
+            <a th:href="@{/login}">Sign in</a>
             <a th:href="@{?lang=LT}">LT</a>
             <a th:href="@{?lang=EN}">EN</a>
         </div>

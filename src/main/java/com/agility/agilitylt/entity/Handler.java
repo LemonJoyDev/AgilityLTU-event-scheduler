@@ -1,6 +1,5 @@
-//package com.agility.agilitylt.repository.entity;
+//package com.agility.agilitylt.entity;
 //
-//import lombok.Data;
 //import lombok.Getter;
 //import lombok.NoArgsConstructor;
 //import lombok.Setter;
@@ -11,7 +10,12 @@
 //@Getter
 //@Setter
 //@NoArgsConstructor
-//public class Handler extends User {
+//public class Handler {
+//
+//    //How??
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id = User.getId();
 //
 //    @Column(name = "clubMember")
 //    private boolean clubMember;

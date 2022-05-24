@@ -12,7 +12,7 @@ public class HomePublicController {
 
     @GetMapping
     public String index() {
-        return "home/publicHome";
+        return "home/homePublic";
     }
 
 

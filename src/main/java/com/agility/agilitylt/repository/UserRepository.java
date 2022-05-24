@@ -1,6 +1,6 @@
 package com.agility.agilitylt.repository;
 
-import com.agility.agilitylt.repository.entity.User;
+import com.agility.agilitylt.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

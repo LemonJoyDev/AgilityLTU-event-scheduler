@@ -1,0 +1,24 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/fragmentsHeaderPublic :: head('agilty | Register user')"></head>
+<body>
+<div th:replace="fragments/fragmentsHeaderPublic :: menu"></div>
+<div class="center">
+    <h1>Register user</h1>
+    <form th:action="@{/user/register-success}" th:object="${user}" method="post">
+        <div>
+            <span>Username: <input type="text" th:field="*{username}"></span>
+        </div>
+        <div>
+            <span>Password: <input type="text" th:field="*{password}"></span>
+        </div>
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+    <div>
+        <a th:href="@{/public/home}">Back to Home</a>
+    </div>
+</div>
+</body>
+
+</html>

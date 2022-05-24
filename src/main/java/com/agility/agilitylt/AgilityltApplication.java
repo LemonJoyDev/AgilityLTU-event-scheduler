@@ -14,4 +14,6 @@ public class AgilityltApplication {
 		SpringApplication.run(AgilityltApplication.class, args);
 	}
 
+
+
 }

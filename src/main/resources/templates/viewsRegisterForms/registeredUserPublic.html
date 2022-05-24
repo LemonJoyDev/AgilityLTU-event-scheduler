@@ -1,0 +1,15 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/fragmentsHeaderPublic :: head('agilty | Register user')"></head>
+<body>
+<div th:replace="fragments/fragmentsHeaderPublic :: menu"></div>
+<div class="center">
+    <h1>Registered user successfully!</h1>
+    <div>
+        <a th:href="@{/login}">Log In!</a>
+    </div>
+    <div>
+        <a th:href="@{/public/home}">Back to Home</a>
+    </div>
+</div>
+</body>
+</html>

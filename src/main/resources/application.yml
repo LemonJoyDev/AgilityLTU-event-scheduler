@@ -29,4 +29,3 @@ logging:
       agility:
         agilitylt:
           controler: TRACE
-
