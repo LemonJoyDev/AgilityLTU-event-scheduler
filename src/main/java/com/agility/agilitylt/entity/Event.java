@@ -3,10 +3,11 @@ package com.agility.agilitylt.entity;
 import com.agility.agilitylt.enums.EventClassification;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Table(name= "event")
 @Entity
@@ -17,6 +18,10 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User user;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -37,29 +42,33 @@ public class Event {
 
 //    Should take from club as default.
     @Column
+    private String country;
+
+    @Column
+    private String city;
+
+    @Column
     private String locationAddress;
 
     @Column
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
 
     @Column
-    private LocalDateTime registrationEndTime;
+    private int noOfEventDays;
 
     @Column
-    private int maxDogParticipants;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate registrationEndDate;
 
     @Column
-    private String startTimeA0;
-
-    @Column
-    private String startTimeA1;
-
-    @Column
-    private String startTimeA2;
-
-    @Column
-    private String startTimeA3;
+    private int maxDogCapacity;
 
     @Column
     private String info;
+
+    @ManyToMany
+    private List<EventConfiguration> agilityCompetitionConfigurations;
+
+
 }

@@ -3,64 +3,56 @@
 <body>
 <div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
 <div class="center">
-    <h1>Register Dog</h1>
-    <form th:action="@{/private/user/dogs/register-success(userId=${#authentication.getPrincipal().getId()})}" th:object="${dog}" method="post">
-<!--    <form th:action="@{/private/handler/dogs/register-success}" th:object="${dog}" method="post">-->
+    <h1>Register Event</h1>
+    <form th:action="@{/private/myEvents/register-success}" th:object="${event}" method="post">
         <div>
-            <span>Name: <input type="text" th:field="*{name}"></span>
-        </div>
-        <div>
-            <span>Breed: <input type="text" th:field="*{breed}"></span>
-        </div>
-        <div>
-            <span>Birth Date: <input type="date" th:field="*{birthDate}"></span>
-        </div>
-        <div>
-            <span>Last Vaccine Date: <input type="date" th:field="*{vaccineDate}"></span>
-        </div>
-        <div>
-            <label>Dog Size:</label>
-
-            <select name="dogSize">
-                <option value="small">Small</option>
-                <option value="medium">Medium</option>
-                <option value="large">Large</option>
+            <labe>Event type:</labe>
+            <select name="classification">
+                <option value="OFFICIAL">Official</option>
+                <option value="UNOFFICIAL">Unofficial</option>
+                <option value="SEMINAR">Seminar</option>
+                <option value="TRAINING">Training</option>
+                <option value="CHARITY">Charity</option>
             </select>
         </div>
         <div>
-            <label>Level:</label>
-
-            <select name="division">
-                <option value="a0">A0</option>
-                <option value="a1">A1</option>
-                <option value="a2">A2</option>
-                <option value="a3">A3</option>
-                <option value="veteran">Veteran</option>
-            </select>
+            <span>Event Title: <input type="text" th:field="*{name}"></span>
         </div>
         <div>
-            <label>Clean courses count:</label>
-
-            <select name="cleanCourses">
-                <option value="0">None</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
+            <span>Organizer name: <input type="text" th:field="*{organizer}"></span>
         </div>
-
-<!--        <div>-->
-<!--            <span>Dog Size: <input type="text" th:field="*{size}"></span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <span>Division: <input type="text" th:field="*{division}"></span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <span>Clean Courses: <input type="int" th:field="*{cleanCourses}"></span>-->
-<!--        </div>-->
-
         <div>
-            <button type="submit">Register Dog</button>
+            <span>Judge Name: <input type="text" th:field="*{judgeName}"></span>
+        </div>
+        <div>
+            <span>Judge Surname: <input type="text" th:field="*{judgeSurname}"></span>
+        </div>
+        <div>
+            <span>Country: <input type="text" th:field="*{country}"></span>
+        </div>
+        <div>
+            <span>City: <input type="text" th:field="*{city}"></span>
+        </div>
+        <div>
+            <span>Location address: <input type="text" th:field="*{locationAddress}"></span>
+        </div>
+        <div>
+            <span>Event date: <input type="date" th:field="*{date}"></span>
+        </div>
+        <div>
+            <span>Number of event days: <input type="number" th:field="*{noOfEventDays}"></span>
+        </div>
+        <div>
+            <span>Registration dead-line: <input type="date" th:field="*{registrationEndDate}"></span>
+        </div>
+        <div>
+            <span>Maximum number of dog attendees: <input type="number" th:field="*{maxDogCapacity}"></span>
+        </div>
+        <div>
+            <span>Additional event information: <input type="text" th:field="*{info}"></span>
+        </div>
+        <div>
+            <button type="submit">Continue to event details</button>
         </div>
     </form>
     <div>

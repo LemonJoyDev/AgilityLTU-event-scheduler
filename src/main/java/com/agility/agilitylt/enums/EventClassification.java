@@ -4,5 +4,6 @@ public enum EventClassification {
     OFFICIAL,
     UNOFFICIAL,
     SEMINAR,
+    TRAINING,
     CHARITY
 }

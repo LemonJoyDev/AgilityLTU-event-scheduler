@@ -2,5 +2,6 @@ package com.agility.agilitylt.enums;
 
 public enum CourseType {
     JUMPING,
-    AGILITY
+    AGILITY,
+    JUMPING_AND_AGILITY
 }
