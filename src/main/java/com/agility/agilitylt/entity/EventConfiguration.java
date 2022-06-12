@@ -8,10 +8,12 @@ import org.apache.tomcat.jni.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
-@Table(name = "day_event_config")
+@Table(name = "event_configuration")
 @Entity
 @Data
 @NoArgsConstructor
@@ -50,19 +52,19 @@ public class EventConfiguration {
     private CourseType courseTypeA3;
 
     @Column
-    @DateTimeFormat(pattern = "HH:mm")
+    @DateTimeFormat(pattern = "[HH:mm]")
     private LocalTime startTimeA0;
 
     @Column
-    @DateTimeFormat(pattern = "HH:mm")
+    @DateTimeFormat(pattern = "[HH:mm]")
     private LocalTime startTimeA1;
 
     @Column
-    @DateTimeFormat(pattern = "HH:mm")
+    @DateTimeFormat(pattern = "[HH:mm]")
     private LocalTime startTimeA2;
 
     @Column
-    @DateTimeFormat(pattern = "HH:mm")
+    @DateTimeFormat(pattern = "[HH:mm]")
     private LocalTime startTimeA3;
 
     @ManyToMany
@@ -70,5 +72,29 @@ public class EventConfiguration {
 
     @ManyToMany
     private List<Dog> dogs;
+
+    public String getA0Info() {
+        if (courseA0) {
+            return "Jumping - Starts at: " + startTimeA0;
+        } else return "No competition";
+    }
+
+    public String getA1Info() {
+        if (courseA1) {
+            return courseTypeA1 + " Starts at: " + startTimeA1;
+        } else return "No competition";
+    }
+
+    public String getA2Info() {
+        if (courseA2) {
+            return courseTypeA2 + " Starts at: " + startTimeA2;
+        } else return "No competition";
+    }
+
+    public String getA3Info() {
+        if (courseA3) {
+            return courseTypeA3 + " Starts at: " + startTimeA3;
+        } else return "No competition";
+    }
 
 }

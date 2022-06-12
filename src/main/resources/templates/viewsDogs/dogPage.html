@@ -1,10 +1,9 @@
 <html xmlns:th="https://www.thymeleaf.org">
-<head th:replace="fragments/fragmentsHeaderPrivate :: head('agilty | Doggy Page')"></head>
+<head th:replace="fragments/fragmentsHeaderPrivate :: head('agility | Doggy Page')"></head>
 <body>
 <div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
 <div class="center">
     <h1 th:text="#{dogPageWelcomeKey}"></h1>
-
     <div th:object="${dog}">
         <div class="dog-generic-info">
             <div>
@@ -61,9 +60,9 @@
 
 
     <div>
-        <a th:href="@{/private/register-handler}">Im a Handler!</a>
-        <a th:href="@{/private/register-club}">I have a club!</a>
-        <a th:href="@{/private/user/dogs/register-dog}">Create dog!</a>
+<!--        <a th:href="@{/private/register-handler}">Im a Handler!</a>-->
+<!--        <a th:href="@{/private/register-club}">I have a club!</a>-->
+        <a th:href="@{/private/user/dogs/register-dog}">Add another dog!</a>
     </div>
 
     <h3>To be developed</h3>

@@ -3,18 +3,46 @@
 <body>
 <div th:replace="fragments/fragmentsHeaderPublic :: menu"></div>
 <div class="center">
-    <h1>Register user</h1>
-    <form th:action="@{/user/register-success}" th:object="${user}" method="post">
-        <div>
-            <span>Username: <input type="text" th:field="*{username}"></span>
-        </div>
-        <div>
-            <span>Password: <input type="password" th:field="*{password}"></span>
-        </div>
-        <div>
-            <button type="submit">Register</button>
-        </div>
-    </form>
+    <div>
+        <h1>Registration Form</h1>
+    </div>
+    <div>
+        <form th:action="@{/user/register-success}" th:object="${user}" method="post">
+
+            <div>
+                <label>Your name</label>
+                <input type="text" th:field="*{name}">
+            </div>
+
+            <div>
+                <label>Your surname</label>
+                <input type="text" th:field="*{surname}">
+            </div>
+
+            <div>
+                <label>Your email address</label>
+                <input type="text" th:field="*{email}">
+            </div>
+
+            <div>
+                <label>Account username</label>
+                <input type="text" th:field="*{username}">
+            </div>
+
+            <div>
+                <label>Account password</label>
+                <input type="password" th:field="*{password}"></label>
+            </div>
+
+
+
+
+
+            <div>
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    </div>
     <div>
         <a th:href="@{/public/home}">Back to Home</a>
     </div>

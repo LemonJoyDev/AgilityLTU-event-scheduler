@@ -4,9 +4,9 @@
 <div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
 <div class="center">
     <h1>Update Event Configuration</h1>
-    <form th:action="@{/private/myEvents/event/update-success}" th:object="${configuration}" method="post">
+    <form th:action="@{/private/my-events/event/{id}/update-success(id = ${eventId})}" th:object="${configuration}" method="post">
         <div>
-            <labe>Select event day:</labe>
+            <label>Select event day:</label>
             <select name="weekDay">
                 <option value="MONDAY">Monday</option>
                 <option value="TUESDAY">Tuesday</option>
@@ -27,7 +27,7 @@
             </fieldset>
         </div>
         <div>
-            <labe>Select A1 course type:</labe>
+            <label>Select A1 course type:</label>
             <select name="courseTypeA1">
                 <option value="JUMPING">Jumping</option>
                 <option value="AGILITY">Agility</option>
@@ -35,7 +35,7 @@
             </select>
         </div>
         <div>
-            <labe>Select A2 course type:</labe>
+            <label>Select A2 course type:</label>
             <select name="courseTypeA2">
                 <option value="JUMPING">Jumping</option>
                 <option value="AGILITY">Agility</option>
@@ -43,27 +43,43 @@
             </select>
         </div>
         <div>
-            <labe>Select A3 course type:</labe>
+            <label>Select A3 course type:</label>
             <select name="courseTypeA3">
                 <option value="JUMPING">Jumping</option>
                 <option value="AGILITY">Agility</option>
                 <option value="JUMPING_AND_AGILITY">Jumping & Agility</option>
             </select>
         </div>
-<!--        <div>-->
-<!--            <span>Starting time for A0: <input type="time" th:field="*{startTimeA0}"></span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <span>Starting time for A1: <input type="time" th:field="*{startTimeA1}"></span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <span>Starting time for A2: <input type="time" th:field="*{startTimeA2}"></span>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            <span>Starting time for A3: <input type="time" th:field="*{startTimeA3}"></span>-->
-<!--        </div>-->
         <div>
-            <button type="submit">Continue to event details</button>
+            <label for="startTimeA0">Starting time for A0</label>
+            <input type="time"
+                   id="startTimeA0"
+                   value="10:00"
+                   name="startTimeA0">
+        </div>
+        <div>
+            <label for="startTimeA1">Starting time for A1</label>
+            <input type="time"
+                   id="startTimeA1"
+                   value="12:00"
+                   name="startTimeA1">
+        </div>
+        <div>
+            <label for="startTimeA2">Starting time for A0</label>
+            <input type="time"
+                   id="startTimeA2"
+                   value="14:00"
+                   name="startTimeA2">
+        </div>
+        <div>
+            <label for="startTimeA3">Starting time for A0</label>
+            <input type="time"
+                   id="startTimeA3"
+                   value="16:00"
+                   name="startTimeA3">
+        </div>
+        <div>
+            <button type="submit">Finish event</button>
         </div>
     </form>
     <div>

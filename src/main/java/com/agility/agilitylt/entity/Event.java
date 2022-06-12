@@ -1,8 +1,9 @@
 package com.agility.agilitylt.entity;
 
 import com.agility.agilitylt.enums.EventClassification;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -11,7 +12,8 @@ import java.util.List;
 
 @Table(name= "event")
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class Event {
 
@@ -19,9 +21,9 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -68,7 +70,7 @@ public class Event {
     private String info;
 
     @ManyToMany
-    private List<EventConfiguration> agilityCompetitionConfigurations;
+    private List<EventConfiguration> eventConfiguration;
 
 
 }

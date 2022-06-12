@@ -3,18 +3,28 @@
 <body>
 <div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
 <div class="center">
-    <h1>Welcome to agility world</h1>
-    <h2>Thanks for signing in</h2>
-
     <div>
-        <a th:href="@{/private/register-handler}">Im a Handler!</a>
-        <a th:href="@{/private/register-club}">I have a club!</a>
-        <a th:href="@{/private/user/dogs/register-dog}">Create dog!</a>
+        <h1>Welcome to agility world</h1>
+        <h1>Thanks for signing in</h1>
     </div>
 
-    <h3>To be developed</h3>
     <div>
-        <a href="https://www.friskyradio.com/">Best radio ever</a>
+        <h3>If you have not yet registered your runner dog, do so now!</h3>
+        <a th:href="@{/private/user/dogs/register-dog}">Create a dog!</a>
+    </div>
+    <div>
+        <h3>But if you have you can go straight to events or create your own.</h3>
+        <a th:href="@{/private/my-events/register-event}">Create an event!</a>
+        <a th:href="@{/private/events}">Attend an event!</a>
+    </div>
+
+<!--    <div>-->
+<!--        <a th:href="@{/private/register-handler}">Im a Handler!</a>-->
+<!--        <a th:href="@{/private/register-club}">I have a club!</a>-->
+<!--    </div>-->
+
+    <div>
+        <a href="https://www.friskyradio.com/">Tune in to radio</a>
     </div>
 </div>
 </body>

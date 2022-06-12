@@ -61,7 +61,7 @@ public class User implements UserDetails {
     private Set<Role> roles = new HashSet<>();
 
     @OneToMany
-    private List<Event> events;
+    private List<EventConfiguration> eventConfigurations;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -6,7 +6,12 @@ import com.agility.agilitylt.exception.EventNotFoundException;
 import com.agility.agilitylt.repository.EventConfigurationRepository;
 import com.agility.agilitylt.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -26,11 +31,34 @@ public class EventService {
 
     public Event register(Event event) { return eventRepository.save(event); }
 
+    public Event update(Event event) { return  eventRepository.save(event); }
+
     public EventConfiguration register(EventConfiguration configurations) { return eventConfigurationRepository.save(configurations); }
+
+    public EventConfiguration update(EventConfiguration configurations) { return eventConfigurationRepository.save(configurations); }
 
     public Event findById(Long id) {
         return eventRepository.findById(id)
                 .orElseThrow(EventNotFoundException::new);
+    }
+
+    public EventConfiguration findConfigurationById(Long id) {
+        return eventConfigurationRepository.findConfigurationById(id)
+                .orElseThrow(EventNotFoundException::new);
+    }
+
+    public Page<Event> findAllPageable(int pageSize, int pageNumber) {
+
+        Pageable pageable = Pageable
+                .ofSize(pageSize)
+                .withPage(pageNumber);
+
+        Page<Event> pageOfEvents = eventRepository.findAll(pageable);
+        pageOfEvents.forEach(event -> {
+            event.setDate(event.getDate());
+        });
+
+        return pageOfEvents;
     }
 
 }

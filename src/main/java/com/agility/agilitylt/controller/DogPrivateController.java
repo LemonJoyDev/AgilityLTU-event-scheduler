@@ -2,23 +2,31 @@ package com.agility.agilitylt.controller;
 
 
 import com.agility.agilitylt.entity.Dog;
-import com.agility.agilitylt.entity.User;
 import com.agility.agilitylt.service.DogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.file.Path;
-
 @Controller
 @RequestMapping(path = "private/user/dogs")
-public class DogController {
+public class DogPrivateController {
 
     private final DogService dogService;
 
-    public DogController(DogService dogService) {
+    public DogPrivateController(DogService dogService) {
         this.dogService = dogService;
     }
+
+//   Will be for myDogs
+//    @GetMapping("/{id}")
+//    public String updateCompetitionConfiguration(
+//            @PathVariable(name = "id") Long id, Model model) {
+//        Event findEvent = eventService.findById(id);
+//        model.addAttribute("eventConfig", findEvent);
+//        model.addAttribute("eventId", id);
+//        return "viewsRegisterForms/updateEventConfigurationPrivate";
+//    }
+
 
     @GetMapping(path = "/dog/{id}")
     public String getDogProfile(
@@ -42,7 +50,6 @@ public class DogController {
         Dog registeredDog = dogService.register(dog, userId);
         model.addAttribute("dog", registeredDog);
         return "redirect:/private/user/dogs/dog/" + registeredDog.getId();
-//        return "redirect:/private/handler/dogs/dog/" + registeredDog.getId();
     }
 
 

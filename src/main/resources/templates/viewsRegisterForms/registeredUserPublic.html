@@ -3,9 +3,25 @@
 <body>
 <div th:replace="fragments/fragmentsHeaderPublic :: menu"></div>
 <div class="center">
-    <h1>Registered user successfully!</h1>
+
     <div>
-        <a th:href="@{/login}">Log In!</a>
+        <h1>Registered user successfully!</h1>
+        <h3>Now log in below in order to register for an event</h3>
+    </div>
+
+    <div class="center">
+        <div th:if="${param.error}" th:text="#{login.badCredentials}"></div>
+        <form th:action="@{/login}" method="post">
+            <div>
+                <span th:text="#{login.usernameLabelKey}"></span>
+                <input type="text" name="username">
+            </div>
+            <div>
+                <span th:text="#{login.passwordLabelKey}"></span>
+                <input type="password" name="password">
+            </div>
+            <input type="submit" th:value="#{login.submit}">
+        </form>
     </div>
     <div>
         <a th:href="@{/public/home}">Back to Home</a>

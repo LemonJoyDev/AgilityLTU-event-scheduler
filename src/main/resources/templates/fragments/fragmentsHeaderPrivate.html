@@ -1,4 +1,5 @@
-styles.css<html xmlns:th="https://www.thymeleaf.org">
+styles.css
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="head(title)">
     <title th:text="*{title}"></title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
@@ -9,11 +10,13 @@ styles.css<html xmlns:th="https://www.thymeleaf.org">
         <img class="logo" th:src="@{/images/Logo.jpg}"/>
     </a>
     <a class="active" th:href="@{/private/events}">Upcoming Events</a>
-    <a class="active" th:href="@{/private/myEvents/register-event}">Create new Event</a>
-    <a th:href="@{/private/leader-board}">Leader board</a>
-    <a th:href="@{/private/dog-random}">I love dogs!</a>
-    <a th:href="@{/logout}">Sign out</a>
-    <a th:href="@{/contacts}">Contacts</a>
+    <a class="active" th:href="@{/private/my-events/register-event}">Create new Event</a>
+    <a th:href="@{/private/user/dogs}">My Dogs</a>
+<!--    <a th:href="@{/private/dog-random}">I love dogs!</a>-->
+    <form sec:authorize="isAuthenticated()" th:action="@{http://localhost:8080/logout}" method="post">
+        <input type="submit" value="logout"/>
+    </form>
+<!--    <a th:href="@{/contacts}">Contacts</a>-->
     <a th:href="@{?lang=LT}">LT</a>
     <a th:href="@{?lang=EN}">EN</a>
 </div>

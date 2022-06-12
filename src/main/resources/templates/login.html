@@ -1,17 +1,24 @@
 <html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/fragmentsHeaderPublic :: head('agilty | Login')"></head>
 <body>
-<div class="center">
+<header th:replace="fragments/fragmentsHeaderPublic :: menu"></header>
+
+<div class="welcome-container">
+    <h1 class="welcome-text">Nice to see you! Log in below...</h1>
+</div>
+
+<div class="form-container">
     <div th:if="${param.error}" th:text="#{login.badCredentials}"></div>
     <form th:action="@{/login}" method="post">
         <div>
-            <span th:text="#{login.usernameLabelKey}"></span>
+            <label th:text="#{login.usernameLabelKey}"></label>
             <input type="text" name="username">
         </div>
         <div>
-            <span th:text="#{login.passwordLabelKey}"></span>
+            <label th:text="#{login.passwordLabelKey}"></label>
             <input type="password" name="password">
         </div>
-        <input type="submit" th:value="#{login.submit}">
+        <button class="submit-button" type="submit" th:value="#{login.submit}"></button>
     </form>
 </div>
 </body>

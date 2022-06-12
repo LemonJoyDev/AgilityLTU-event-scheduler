@@ -2,46 +2,119 @@ package com.agility.agilitylt.controller;
 
 import com.agility.agilitylt.entity.EventConfiguration;
 import com.agility.agilitylt.entity.Event;
+import com.agility.agilitylt.entity.User;
 import com.agility.agilitylt.service.EventService;
+import com.agility.agilitylt.service.UserService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/private/myEvents")
+@RequestMapping("/private")
+
 public class EventPrivateController {
 
     private EventService eventService;
+    private UserService userService;
 
-    public EventPrivateController(EventService eventService) { this.eventService = eventService;}
-
-    @GetMapping("/register-event")
+    public EventPrivateController(EventService eventService, UserService userService) {
+        this.eventService = eventService;
+        this.userService = userService;
+    }
+    //____________________________Create event start here___________________________________________
+    @GetMapping("/my-events/register-event")
     public String getRegisterEventForm(Model model) {
         model.addAttribute("event", new Event());
         return "viewsRegisterForms/registerEventPrivate";
     }
 
-    @PostMapping("/register-success")
+    @PostMapping("/my-events/register-success")
     //Refactor later to request not user, but club param
     public String registerEvent(Event event, Model model) {
         Event registeredEvent = eventService.register(event);
         model.addAttribute("event", registeredEvent);
-        return "redirect:/private/myEvents/event/" + registeredEvent.getId() + "/update";
+        return "redirect:/private/my-events/event/" + registeredEvent.getId() + "/update";
 //        return "redirect:/private/club/myEvents/"
     }
 
-    @GetMapping("/event/{id}/update")
+    @GetMapping("/my-events/event/{id}/update")
     public String updateCompetitionConfiguration(
             @PathVariable(name = "id") Long id, Model model) {
         Event findEvent = eventService.findById(id);
         model.addAttribute("eventConfig", findEvent);
+        model.addAttribute("eventId", id);
         return "viewsRegisterForms/updateEventConfigurationPrivate";
     }
+//____________________________Create event finish here__________________________________________________________________
 
-    @PostMapping("/event/update-success")
-    public String updateEventConfig(EventConfiguration configurations, Model model) {
+
+//____________________________Create configurations start here__________________________________________________________
+    @PostMapping("/my-events/event/{id}/update-success")
+    public String updateEventConfig(
+            @PathVariable(name = "id") Long id, EventConfiguration configurations, Model model) {
         EventConfiguration updatedConfig = eventService.register(configurations);
         model.addAttribute("configuration", updatedConfig);
-        return "redirected:/private/home";
+
+        Event event = eventService.findById(id);
+        event.getEventConfiguration().add(updatedConfig);
+        eventService.update(event);
+
+        return "redirect:/private/home";
     }
+
+    @PostMapping("/events/event/{user-id}/{configuration-id}/add-user")
+    public String addUserToEventConfig(
+            @PathVariable(name = "configuration-id") Long configurationId, @PathVariable(name = "user-id") Long userId) {
+        User user = userService.findById(userId);
+        EventConfiguration eventConfiguration = eventService.findConfigurationById(configurationId);
+
+        eventConfiguration.getUsers().add(user);
+        user.getEventConfigurations().add(eventConfiguration);
+
+        eventService.update(eventConfiguration);
+        userService.update(user);
+
+        return "redirect:/private/home";
+    }
+
+//____________________________Create configurations finish here_________________________________________________________
+
+
+
+//____________________________Display event info and event list start here______________________________________________
+    @GetMapping("/events/event/{id}")
+    public String viewEvent(
+            @PathVariable(name = "id") Long id, Model model) {
+        Event findEvent = eventService.findById(id);
+        model.addAttribute("event", findEvent);
+        return "viewsEvents/eventPage";
+    }
+
+    @GetMapping("/events")
+    public String getEventList(
+            @RequestParam(name = "page", defaultValue = "0") int pageNumber, Model model) {
+
+        Page<Event> eventPage = eventService.findAllPageable(5, pageNumber);
+
+        List<Event> events = eventPage.getContent();
+
+        model.addAttribute("events", events);
+        model.addAttribute("currentPage", pageNumber);
+        model.addAttribute("totalPages", eventPage.getTotalPages());
+
+        return "viewsEvents/showAllEventsPrivate";
+
+    }
+//____________________________Display MY events info and event list start here__________________________________________
+
+//____________________________Display event info and event list finish here_____________________________________________
+
+
+
+
+
+
 }

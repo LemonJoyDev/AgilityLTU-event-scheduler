@@ -1,12 +1,12 @@
 <html xmlns:th="https://www.thymeleaf.org">
-<head th:replace="fragments/fragmentsHeaderPrivate :: head('agilty | Register user')"></head>
+<head th:replace="fragments/fragmentsHeaderPrivate :: head('agilty | Register event')"></head>
 <body>
 <div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
 <div class="center">
     <h1>Register Event</h1>
-    <form th:action="@{/private/myEvents/register-success}" th:object="${event}" method="post">
+    <form th:action="@{/private/my-events/register-success}" th:object="${event}" method="post">
         <div>
-            <labe>Event type:</labe>
+            <label>Event type:</label>
             <select name="classification">
                 <option value="OFFICIAL">Official</option>
                 <option value="UNOFFICIAL">Unofficial</option>

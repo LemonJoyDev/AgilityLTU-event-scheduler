@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/fragmentsHeaderPrivate :: head('agility | My events')"></head>
+<body>
+    <div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
+    <div>
+        <h1>Here you can view all events created by you.</h1>
+    </div>
+    <main>
+        <div th:object="${event}">
+            <div>
+                <span th:text="#{eventClassificationKey}"></span>
+                <span th:text="*{classification}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventNameKey}"></span>
+                <span th:text="*{name}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventOrganizerKey}"></span>
+                <span th:text="*{organizer}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventJudgeNameKey} + #{eventJudgeSurnameKey}"></span>
+                <span th:text="*{judgeName} + ' ' + *{judgeSurname}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventCountryKey}"></span>
+                <span th:text="*{country}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventCityKey}"></span>
+                <span th:text="*{city}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventLocationKey}"></span>
+                <span th:text="*{locationAddress}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventDateKey}"></span>
+                <span th:text="*{date}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventNoOfDaysKey}"></span>
+                <span th:text="*{noOfEventDays}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventRegistrationEndDateKey}"></span>
+                <span th:text="*{registrationEndDate}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventMaxDogCapacityKey}"></span>
+                <span th:text="*{maxDogCapacity}"></span>
+            </div>
+            <div>
+                <span th:text="#{eventInfoKey}"></span>
+                <span th:text="*{info}"></span>
+            </div>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th scope="col">Week day</th>
+                    <th scope="col">A0 course info</th>
+                    <th scope="col">A1 course info</th>
+                    <th scope="col">A2 course info</th>
+                    <th scope="col">A3 course info</th>
+                </tr>
+                </thead>
+<!--                <tbody th:each="eventConfiguration: ${event.getEventConfiguration()}">-->
+<!--                <tr>-->
+<!--                    <td th:text="${eventConfiguration.getWeekDay()}">Weekdays</td>-->
+<!--                    <td th:text="${eventConfiguration.getA0Info()}">Course type</td>-->
+<!--                    <td th:text="${eventConfiguration.getA1Info()}"></td>-->
+<!--                    <td th:text="${eventConfiguration.getA2Info()}"></td>-->
+<!--                    <td th:text="${eventConfiguration.getA3Info()}"></td>-->
+<!--                    <td>-->
+<!--                        <form th:action="@{/private/events/event/{user-id}/{configuration-id}/add-user (user-id=${event.getId()}, configuration-id=${eventConfiguration.getId()})}"-->
+<!--                              method="post">-->
+<!--                            <button-->
+<!--                                    type="submit">Register to day-event-->
+<!--                            </button>-->
+<!--                        </form>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+            </table>
+        </div>
+    </main>
+</body>
+</html>

@@ -43,3 +43,27 @@
 .logo {
     max-height: 20px;
 }
+
+body {
+    background-image: url("https://cdn.wallpapersafari.com/87/29/zA741G.jpg");
+    background-position: center;
+    background-size: cover;
+    font-family: Georgia, serif;
+}
+
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.form-container {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    min-height: 70vh;
+
+}
+
