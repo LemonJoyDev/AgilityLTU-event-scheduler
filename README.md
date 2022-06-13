@@ -1,10 +1,20 @@
 # Agility register events
-Goal of the application is to be able to register an account, find and register to events. Track statistics. 
+Goal of the application is to be able to register an account, find and register to events. Register your dog.
+___
+Application build using Docker-compose, MySql, Spring and bootstrap.
 
 ---
 ## How to start application
-1. Yet I don't know.
-2. Goal is to register accounts and give them proper rights.
-3. Put everything into mySql database. 
-4. Will update all these when I udnerstand what is happening :D
-5. 
+1. Open project folder from github.
+2. Launch MySql database.
+3. Run AgilityltApplication
+4. Browse through: localhost:8080/public/home
+
+## Users
+Admin:
+username - test
+password - pass
+
+User role:
+username - rokis
+password - pass

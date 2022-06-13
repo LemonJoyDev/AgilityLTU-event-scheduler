@@ -1,62 +1,67 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="fragments/fragmentsHeaderPrivate :: head('agility | All events')"></head>
-<body>
-    <div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
-    <div>
-        <h1>Find and select which you will attend</h1>
-    </div>
-    <div>
-        <table>
-            <thead>
-            <tr>
-<!--                <th th:text="#{list.eventName}">name</th>-->
-<!--                <th th:text="#{list.eventOrganiser}">organizer</th>-->
-<!--                <th th:text="#{list.eventCountry}">country</th>-->
-<!--                <th th:text="#{list.productCity}">city</th>-->
-<!--                <th th:text="#{list.productLocationAddress}">locationAddress</th>-->
-<!--                <th th:text="#{list.productDate}">date</th>-->
-<!--                <th scope="col">registrationEndDate</th>-->
-                <th scope="col">name</th>
-                <th scope="col">organizer</th>
-                <th scope="col">country</th>
-                <th scope="col">city</th>
-                <th scope="col">location address</th>
-                <th scope="col">date</th>
-                <th scope="col">registration end date</th>
-                <th scope="col">View event details</th>
-            </tr>
-            </thead>
-            <tbody th:each="event: ${events}">
-                <tr th:object="${event}">
-                    <td th:text="*{name}"></td>
-                    <td th:text="*{organizer}"></td>
-                    <td th:text="*{country}"></td>
-                    <td th:text="*{city}"></td>
-                    <td th:text="*{locationAddress}"></td>
-                    <td th:text="*{date}"></td>
-                    <td th:text="*{registrationEndDate}"></td>
-                    <td>
-                        <a th:href="@{/public/events/event/{id}(id=${event.getId()})}"
-                           sec:authorize="!isAuthenticated()">Attend event
-                        </a>
-                        <a sec:authorize="hasRole('ROLE_USER')"
-                           th:href="@{/private/events/event/{id}(id=${event.getId()})}">Attend event
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div>
-            <a th:href="@{/private/events(page=${currentPage - 1})}"> < </a>
-            <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">
-                    <a th:href="@{/private/events(page=${page})}" th:text="${page + 1}"></a>
-                </span>
-            <a th:href="@{/private/events(page=${currentPage + 1})}"> > </a>
-        </div>
-    </div>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+<!--<head th:replace="fragments/fragmentsHeaderPrivate :: head('agility | All events')"></head>-->
+<!--<body>-->
+<!--    <div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>-->
+<!--    <div>-->
+<!--        <h1>Find and select which you will attend</h1>-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <table>-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--&lt;!&ndash;                <th th:text="#{list.eventName}">name</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th th:text="#{list.eventOrganiser}">organizer</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th th:text="#{list.eventCountry}">country</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th th:text="#{list.productCity}">city</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th th:text="#{list.productLocationAddress}">locationAddress</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th th:text="#{list.productDate}">date</th>&ndash;&gt;-->
+<!--&lt;!&ndash;                <th scope="col">registrationEndDate</th>&ndash;&gt;-->
+<!--                <th scope="col">name</th>-->
+<!--                <th scope="col">organizer</th>-->
+<!--                <th scope="col">country</th>-->
+<!--                <th scope="col">city</th>-->
+<!--                <th scope="col">location address</th>-->
+<!--                <th scope="col">date</th>-->
+<!--                <th scope="col">registration end date</th>-->
+<!--                <th scope="col">View event details</th>-->
+<!--                <th sec:authorize="hasRole('ROLE_ADMIN')" scope="col">Remove event</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody th:each="event: ${events}">-->
+<!--                <tr th:object="${event}">-->
+<!--                    <td th:text="*{name}"></td>-->
+<!--                    <td th:text="*{organizer}"></td>-->
+<!--                    <td th:text="*{country}"></td>-->
+<!--                    <td th:text="*{city}"></td>-->
+<!--                    <td th:text="*{locationAddress}"></td>-->
+<!--                    <td th:text="*{date}"></td>-->
+<!--                    <td th:text="*{registrationEndDate}"></td>-->
+<!--                    <td>-->
+<!--                        <a th:href="@{/user/register-user}"-->
+<!--                           sec:authorize="!isAuthenticated()">Register & attend event-->
+<!--                        </a>-->
+<!--                        <a sec:authorize="hasRole('ROLE_USER')"-->
+<!--                           th:href="@{/private/events/event/{id}(id=${event.getId()})}">Attend event-->
+<!--                        </a>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/private/my-events/event/{id}/delete(id=${event.getId()})}">-->
+<!--                            <div class="button" th:text="#{list.delete}"></div>-->
+<!--                        </a>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--        <div>-->
+<!--            <a th:href="@{/private/events(page=${currentPage - 1})}"> < </a>-->
+<!--            <span th:each="page: ${#numbers.sequence(0, totalPages - 1)}">-->
+<!--                    <a th:href="@{/private/events(page=${page})}" th:text="${page + 1}"></a>-->
+<!--                </span>-->
+<!--            <a th:href="@{/private/events(page=${currentPage + 1})}"> > </a>-->
+<!--        </div>-->
+<!--    </div>-->
 
-
-
-</body>
-</html>
+<!--    <div th:replace="/fragments/linksScripts :: links-scripts"></div>-->
+<!--</body>-->
+<!--</html>-->

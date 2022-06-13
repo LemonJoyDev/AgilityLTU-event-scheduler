@@ -1,45 +1,42 @@
 <html xmlns:th="https://www.thymeleaf.org">
-<head th:replace="fragments/fragmentsHeaderPublic :: head('agilty | Register user')"></head>
+<head th:replace="fragments/fragmentsHeaderPrivate :: head('agilty | Register user')"></head>
 <body>
-<div th:replace="fragments/fragmentsHeaderPublic :: menu"></div>
-<div class="center">
+<header th:replace="fragments/fragmentsHeaderPrivate :: menu"></header>
+<div class="position-absolute top-50 start-50 translate-middle bg-light p-lg-5 border border-dark border-3 rounded"
+     style="--bs-bg-opacity: .7;">
     <div>
-        <h1>Registration Form</h1>
+        <h1 class="p-lg-5">Registration Form</h1>
     </div>
     <div>
-        <form th:action="@{/user/register-success}" th:object="${user}" method="post">
-
-            <div>
-                <label>Your name</label>
-                <input type="text" th:field="*{name}">
+        <form class="row g-3 needs-validation" novalidate th:action="@{/user/register-success}" th:object="${user}" method="post">
+            <div class="col-md-6">
+                <label for="inputUsername" class="form-label">Username</label>
+                <input type="text" th:field="*{username}" class="form-control" id="inputUsername" required>
+<!--                Grazinti teksta jei vartotojo vardas jau rastas-->
+<!--                <div th:if="${existedUsername != null}" class="alert alert-danger notification" role="alert">-->
+<!--                    <p th:text="${existedUsername}"></p><p> already exists</p>-->
+<!--                </div>-->
+            </div>
+            <div class="col-md-6">
+                <label for="inputSurname" class="form-label">Password</label>
+                <input type="password" th:field="*{password}" class="form-control" id="inputPassword" required>
             </div>
 
-            <div>
-                <label>Your surname</label>
-                <input type="text" th:field="*{surname}">
+            <div class="col-md-6">
+                <label for="inputName" class="form-label">First name</label>
+                <input type="text" th:field="*{name}" class="form-control" id="inputName" required>
             </div>
-
-            <div>
-                <label>Your email address</label>
-                <input type="text" th:field="*{email}">
+            <div class="col-md-6">
+                <label for="inputSurname" class="form-label">Last name</label>
+                <input type="text" th:field="*{surname}" class="form-control" id="inputSurname" required>
             </div>
-
-            <div>
-                <label>Account username</label>
-                <input type="text" th:field="*{username}">
+            <div class="col-md-6">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" th:field="*{email}" class="form-control" id="inputEmail" required>
             </div>
-
-            <div>
-                <label>Account password</label>
-                <input type="password" th:field="*{password}"></label>
-            </div>
-
-
-
-
-
-            <div>
-                <button type="submit">Register</button>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Register</button>
+                <a class="position-absolute bottom-0 end-0 p-3" th:href="@{/public/home}">Back to Home</a>
             </div>
         </form>
     </div>
@@ -47,6 +44,7 @@
         <a th:href="@{/public/home}">Back to Home</a>
     </div>
 </div>
-</body>
 
+<div th:replace="/fragments/linksScripts :: links-scripts"></div>
+</body>
 </html>

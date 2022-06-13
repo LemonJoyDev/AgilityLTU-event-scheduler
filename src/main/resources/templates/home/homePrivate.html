@@ -1,31 +1,37 @@
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/fragmentsHeaderPrivate :: head('agilty | Home')"></head>
 <body>
-<div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
-<div class="center">
-    <div>
-        <h1>Welcome to agility world</h1>
-        <h1>Thanks for signing in</h1>
-    </div>
+<header th:replace="fragments/fragmentsHeaderPrivate :: menu"></header>
+    <div class="position-absolute top-50 start-50 translate-middle bg-light p-lg-3 border border-dark border-3 rounded" style="--bs-bg-opacity: .7;">
+        <div class="mb-5">
+            <h1 class="text-center">Welcome to agility world!</h1>
+            <h1 class="text-center">Thanks for signing in.</h1>
+        </div>
 
-    <div>
-        <h3>If you have not yet registered your runner dog, do so now!</h3>
-        <a th:href="@{/private/user/dogs/register-dog}">Create a dog!</a>
-    </div>
-    <div>
-        <h3>But if you have you can go straight to events or create your own.</h3>
-        <a th:href="@{/private/my-events/register-event}">Create an event!</a>
-        <a th:href="@{/private/events}">Attend an event!</a>
-    </div>
+        <div>
+            <div class="text-center">
+                <h3>If you have not yet registered your runner dog, do so now!</h3>
+                <a th:href="@{/private/user/dogs/register-dog}" >
+                    <button class="btn btn-success" type="button">Create a dog!</button>
+                </a>
+            </div>
 
-<!--    <div>-->
-<!--        <a th:href="@{/private/register-handler}">Im a Handler!</a>-->
-<!--        <a th:href="@{/private/register-club}">I have a club!</a>-->
-<!--    </div>-->
-
-    <div>
-        <a href="https://www.friskyradio.com/">Tune in to radio</a>
+            <div class="text-center">
+                <h3>But if you have you can go straight to events.</h3>
+                <h3 sec:authorize="hasRole('ROLE_ADMIN')">Only Admins can manage events.</h3>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/private/my-events/register-event}">
+                    <button  class="btn btn-success" type="button">Create an event!</button>
+                </a>
+                <a th:href="@{/public/events}">
+                    <button  class="btn btn-warning" type="button">Attend an event!</button>
+                </a>
+            </div>
+        </div>
+        <!--    <div>-->
+        <!--        <a th:href="@{/private/register-handler}">Im a Handler!</a>-->
+        <!--        <a th:href="@{/private/register-club}">I have a club!</a>-->
+        <!--    </div>-->
     </div>
-</div>
+<div th:replace="/fragments/linksScripts :: links-scripts"></div>
 </body>
 </html>

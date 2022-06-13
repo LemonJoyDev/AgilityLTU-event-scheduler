@@ -38,5 +38,6 @@
             <a th:href="@{/users}">Back to list</a>
             <a th:href="@{/users/user/(id=${user.getId())}}">Add new dog</a>
         </div>
+    <div th:replace="/fragments/linksScripts :: links-scripts"></div>
     </body>
 </html>

@@ -21,6 +21,7 @@ public class UserService implements UserDetailsService {
     private final RoleService roleService;
 
     public User findById(Long id) { return userRepository.findById(id).orElseThrow(UserNotFoundException::new); }
+    public User findByUsername(String username) { return userRepository.findByUsername(username).orElseThrow(UserNotFoundException::new); }
 
     public User register(User user) {
         user.getRoles().add(roleService.setRole(Authority.USER));
@@ -35,6 +36,10 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User with username: " + username + " was not found"));
 
     }
+
+//    public User checkIfUsernameExists(String username) {
+//        if (userRepository.findByUsername(username) == )
+//    }
 
 //    public User getAuthenticatedUserId(Authentication authentication){
 //        Long id = ((User) authentication.getPrincipal()).getId();

@@ -6,6 +6,7 @@ import com.agility.agilitylt.entity.User;
 import com.agility.agilitylt.service.EventService;
 import com.agility.agilitylt.service.UserService;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -47,6 +48,13 @@ public class EventPrivateController {
         model.addAttribute("eventConfig", findEvent);
         model.addAttribute("eventId", id);
         return "viewsRegisterForms/updateEventConfigurationPrivate";
+    }
+
+    @GetMapping("/my-events/event/{id}/delete")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String deleteEvent(@PathVariable(name = "id") long id) {
+        eventService.deleteEvent(id);
+        return "redirect:/private/home";
     }
 //____________________________Create event finish here__________________________________________________________________
 

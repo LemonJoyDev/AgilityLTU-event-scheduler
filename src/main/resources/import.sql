@@ -53,13 +53,11 @@ INSERT INTO event_event_configuration(event_configuration_id, event_id) VALUES (
 INSERT INTO event_event_configuration(event_configuration_id, event_id) VALUES (4,2);
 INSERT INTO event_event_configuration(event_configuration_id, event_id) VALUES (5,2);
 INSERT INTO event_event_configuration(event_configuration_id, event_id) VALUES (6,3);
---INSERT INTO event_event_configuration(event_configuration_id, event_id) VALUES (7,4);
---INSERT INTO event_event_configuration(event_configuration_id, event_id) VALUES (8,5);
---INSERT INTO event_event_configuration(event_configuration_id, event_id) VALUES (9,6);
-
-INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (1, 1)
-INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (1, 2)
-INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (2, 3)
-INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (3, 4)
-INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (3, 5)
-INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (4, 6)
+--
+--
+--INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (1, 1)
+--INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (1, 2)
+--INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (2, 3)
+--INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (3, 4)
+--INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (3, 5)
+--INSERT INTO user_event_configurations(user_id, event_configurations_id) VALUES (4, 6)
