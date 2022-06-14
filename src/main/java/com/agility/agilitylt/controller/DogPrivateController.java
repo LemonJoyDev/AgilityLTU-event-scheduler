@@ -3,6 +3,7 @@ package com.agility.agilitylt.controller;
 
 import com.agility.agilitylt.entity.Dog;
 import com.agility.agilitylt.service.DogService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class DogPrivateController {
 
 
     @GetMapping(path = "/dog/{id}")
+    @PreAuthorize("hasRole('USER')")
     public String getDogProfile(
             @PathVariable(name = "id") Long id,
             Model model
@@ -40,12 +42,14 @@ public class DogPrivateController {
     }
 
     @GetMapping("/register-dog")
+    @PreAuthorize("hasRole('USER')")
     public String getRegisterUserForm(Model model) {
         model.addAttribute("dog", new Dog());
         return "viewsRegisterForms/registerDogPrivate";
     }
 
     @PostMapping("/register-success")
+    @PreAuthorize("hasRole('USER')")
     public String registerDog(@RequestParam("userId") Long userId, Dog dog, Model model) {
         Dog registeredDog = dogService.register(dog, userId);
         model.addAttribute("dog", registeredDog);

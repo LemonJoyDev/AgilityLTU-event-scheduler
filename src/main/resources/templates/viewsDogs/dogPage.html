@@ -1,8 +1,8 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head th:replace="fragments/fragmentsHeaderPrivate :: head('agility | Doggy Page')"></head>
 <body>
-<div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
-<div class="center">
+<header th:replace="fragments/fragmentsHeaderPrivate :: menu"></header>
+<div class="position-absolute top-50 start-50 translate-middle bg-light p-2 border border-dark border-3 rounded" style="--bs-bg-opacity: .7;">
     <h1 th:text="#{dogPageWelcomeKey}"></h1>
     <div th:object="${dog}">
         <div class="dog-generic-info">
@@ -66,10 +66,6 @@
     </div>
 
     <h3>To be developed</h3>
-    <div>
-        <a href="https://www.friskyradio.com/">Best radio ever</a>
-    </div>
 </div>
-<div th:replace="/fragments/linksScripts :: links-scripts"></div>
 </body>
 </html>

@@ -1,13 +1,14 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head th:replace="fragments/fragmentsHeaderPrivate :: head('agilty | Register event')"></head>
+<header th:replace="fragments/fragmentsHeaderPrivate :: menu"></header>
 <body>
-<div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
-<div class="center">
+<div class="position-absolute top-50 start-50 translate-middle bg-light p-2 mt-5 border border-dark border-3 rounded" style="--bs-bg-opacity: .7;">
     <h1>Register Event</h1>
-    <form th:action="@{/private/my-events/register-success}" th:object="${event}" method="post">
-        <div>
-            <label>Event type:</label>
-            <select name="classification">
+    <form class="row g-1 needs-validation" novalidate th:action="@{/private/my-events/register-success}" th:object="${event}" method="post">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputEventType">Event type:</label>
+            <select name="classification" class="form-select" id="inputEventType" required>
+                <option selected disabled value="">Choose...</option>
                 <option value="OFFICIAL">Official</option>
                 <option value="UNOFFICIAL">Unofficial</option>
                 <option value="SEMINAR">Seminar</option>
@@ -15,49 +16,59 @@
                 <option value="CHARITY">Charity</option>
             </select>
         </div>
-        <div>
-            <span>Event Title: <input type="text" th:field="*{name}"></span>
+        <div class="col-md-6">
+            <label for="inputName" class="form-label">Event Title</label>
+            <input type="text" th:field="*{name}" class="form-control" id="inputName" required>
         </div>
-        <div>
-            <span>Organizer name: <input type="text" th:field="*{organizer}"></span>
+        <div class="col-md-6">
+            <label for="inputOrganizer" class="form-label">Organizer</label>
+            <input type="text" th:field="*{organizer}" class="form-control" id="inputOrganizer" required>
         </div>
-        <div>
-            <span>Judge Name: <input type="text" th:field="*{judgeName}"></span>
+        <div class="col-md-6">
+            <label for="inputJudgeName" class="form-label">Judge Name</label>
+            <input type="text" th:field="*{judgeName}" class="form-control" id="inputJudgeName" required>
         </div>
-        <div>
-            <span>Judge Surname: <input type="text" th:field="*{judgeSurname}"></span>
+        <div class="col-md-6">
+            <label for="inputJudgeSurname" class="form-label">Judge Surname</label>
+            <input type="text" th:field="*{judgeSurname}" class="form-control" id="inputJudgeSurname" required>
         </div>
-        <div>
-            <span>Country: <input type="text" th:field="*{country}"></span>
+        <div class="col-md-6">
+            <label for="inputCountry" class="form-label">Country</label>
+            <input type="text" th:field="*{country}" class="form-control" id="inputCountry" required>
         </div>
-        <div>
-            <span>City: <input type="text" th:field="*{city}"></span>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" th:field="*{city}" class="form-control" id="inputCity" required>
         </div>
-        <div>
-            <span>Location address: <input type="text" th:field="*{locationAddress}"></span>
+        <div class="col-md-6">
+            <label for="inputLocationAddress" class="form-label">Location address</label>
+            <input type="text" th:field="*{locationAddress}" class="form-control" id="inputLocationAddress" required>
         </div>
-        <div>
-            <span>Event date: <input type="date" th:field="*{date}"></span>
+        <div class="col-md-6">
+            <label for="inputDate" class="form-label">Event date</label>
+            <input type="date" th:field="*{date}" class="form-control" id="inputDate" required>
         </div>
-        <div>
-            <span>Number of event days: <input type="number" th:field="*{noOfEventDays}"></span>
+        <div class="col-md-6">
+            <label for="inputNoOfEventDays" class="form-label">Number of event days</label>
+            <input type="number" th:field="*{noOfEventDays}" class="form-control" id="inputNoOfEventDays"  value="1" required>
         </div>
-        <div>
-            <span>Registration dead-line: <input type="date" th:field="*{registrationEndDate}"></span>
+        <div class="col-md-6">
+            <label for="inputRegistrationEndDate" class="form-label">Registration dead-line</label>
+            <input type="date" th:field="*{registrationEndDate}" class="form-control" id="inputRegistrationEndDate" required>
         </div>
-        <div>
-            <span>Maximum number of dog attendees: <input type="number" th:field="*{maxDogCapacity}"></span>
+        <div class="col-md-6">
+            <label for="inputMaxDogCapacity" class="form-label">Maximum number of dog attendees</label>
+            <input type="number" th:field="*{maxDogCapacity}" class="form-control col-md-2 p-1" id="inputMaxDogCapacity">
         </div>
-        <div>
-            <span>Additional event information: <input type="text" th:field="*{info}"></span>
+        <div class="col-md-12">
+            <label for="inputInfo" class="form-label">Additional event information</label>
+            <textarea class="form-control p-5" th:field="*{info}" aria-label="With textarea" id="inputInfo"></textarea>
         </div>
-        <div>
-            <button type="submit">Continue to event details</button>
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary">Continue to event details</button>
+            <a class="position-absolute bottom-0 end-0 p-3" th:href="@{/private/home}">Back to Home</a>
         </div>
     </form>
-    <div>
-        <a th:href="@{/private/home}">Back to Home</a>
-    </div>
 </div>
 <div th:replace="/fragments/linksScripts :: links-scripts"></div>
 </body>

@@ -1,13 +1,14 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head th:replace="fragments/fragmentsHeaderPrivate :: head('agilty | Register user')"></head>
 <body>
-<div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
-<div class="center">
-    <h1>Update Event Configuration</h1>
+<header th:replace="fragments/fragmentsHeaderPrivate :: menu"></header>
+<div class="position-absolute top-50 start-50 translate-middle bg-light p-lg-5 border border-dark border-3 rounded" style="--bs-bg-opacity: .7;">
+    <h1 class="p-3">Update Event Configuration</h1>
     <form th:action="@{/private/my-events/event/{id}/update-success(id = ${eventId})}" th:object="${configuration}" method="post">
-        <div>
-            <label>Select event day:</label>
-            <select name="weekDay">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputLevel">Select event day</label>
+            <select name="division" class="form-select" id="inputLevel" required>
+                <option selected disabled value="">Choose...</option>
                 <option value="MONDAY">Monday</option>
                 <option value="TUESDAY">Tuesday</option>
                 <option value="WEDNESDAY">Wednesday</option>
@@ -15,76 +16,86 @@
                 <option value="FRIDAY">Friday</option>
                 <option value="SATURDAY">Saturday</option>
                 <option value="SUNDAY">Sunday</option>
+                <option value="veteran">Veteran</option>
             </select>
         </div>
-        <div>
-            <fieldset>
-                <legend>Select course levels</legend>
-                <input type="checkbox" name="courseA0" value="TRUE">A0<br>
-                <input type="checkbox" name="courseA1" value="TRUE">A1<br>
-                <input type="checkbox" name="courseA2" value="TRUE">A2<br>
-                <input type="checkbox" name="courseA3" value="TRUE">A3<br>
-            </fieldset>
-        </div>
-        <div>
-            <label>Select A1 course type:</label>
-            <select name="courseTypeA1">
+        <fieldset class="mb-4">
+            <legend>Select course levels</legend>
+            <div class="btn-group bg-white" role="group" aria-label="Basic checkbox toggle button group">
+                <input type="checkbox" name="courseA0" class="btn-check" id="btncheck1" autocomplete="off" value="TRUE">
+                <label class="btn btn-outline-primary" for="btncheck1">A1</label>
+
+                <input type="checkbox" name="courseA1" class="btn-check" id="btncheck2" autocomplete="off" value="TRUE">
+                <label class="btn btn-outline-primary" for="btncheck2">A2</label>
+
+                <input type="checkbox" name="courseA2" class="btn-check" id="btncheck3" autocomplete="off" value="TRUE">
+                <label class="btn btn-outline-primary" for="btncheck3">A3</label>
+
+                <input type="checkbox" name="courseA3" class="btn-check" id="btncheck4" autocomplete="off" value="TRUE">
+                <label class="btn btn-outline-primary" for="btncheck4">A4</label>
+            </div>
+        </fieldset>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputCourseTypeA1">Select A1 course type</label>
+            <select name="courseTypeA1" class="form-select" id="inputCourseTypeA1" required>
+                <option selected disabled value="">Choose...</option>
                 <option value="JUMPING">Jumping</option>
                 <option value="AGILITY">Agility</option>
                 <option value="JUMPING_AND_AGILITY">Jumping & Agility</option>
             </select>
         </div>
-        <div>
-            <label>Select A2 course type:</label>
-            <select name="courseTypeA2">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputCourseTypeA2">Select A2 course type</label>
+            <select name="courseTypeA2" class="form-select" id="inputCourseTypeA2" required>
+                <option selected disabled value="">Choose...</option>
                 <option value="JUMPING">Jumping</option>
                 <option value="AGILITY">Agility</option>
                 <option value="JUMPING_AND_AGILITY">Jumping & Agility</option>
             </select>
         </div>
-        <div>
-            <label>Select A3 course type:</label>
-            <select name="courseTypeA3">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputCourseTypeA3">Select A3 course type</label>
+            <select name="courseTypeA3" class="form-select" id="inputCourseTypeA3" required>
+                <option selected disabled value="">Choose...</option>
                 <option value="JUMPING">Jumping</option>
                 <option value="AGILITY">Agility</option>
                 <option value="JUMPING_AND_AGILITY">Jumping & Agility</option>
             </select>
         </div>
-        <div>
+        <div class="p-2">
             <label for="startTimeA0">Starting time for A0</label>
-            <input type="time"
+            <input class="" type="time"
                    id="startTimeA0"
                    value="10:00"
                    name="startTimeA0">
         </div>
-        <div>
+        <div class="p-2">
             <label for="startTimeA1">Starting time for A1</label>
             <input type="time"
                    id="startTimeA1"
                    value="12:00"
                    name="startTimeA1">
         </div>
-        <div>
+        <div class="p-2">
             <label for="startTimeA2">Starting time for A0</label>
             <input type="time"
                    id="startTimeA2"
                    value="14:00"
                    name="startTimeA2">
         </div>
-        <div>
+        <div class="p-2">
             <label for="startTimeA3">Starting time for A0</label>
             <input type="time"
                    id="startTimeA3"
                    value="16:00"
                    name="startTimeA3">
         </div>
-        <div>
-            <button type="submit">Finish event</button>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Register Dog</button>
+            <a class="position-absolute bottom-0 end-0 p-3" th:href="@{/private/home}">Back to Home</a>
         </div>
     </form>
-    <div>
-        <a th:href="@{/private/home}">Back to Home</a>
-    </div>
+</div>
 </div>
 <div th:replace="/fragments/linksScripts :: links-scripts"></div>
 </body>

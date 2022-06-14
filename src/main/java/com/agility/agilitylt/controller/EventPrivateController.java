@@ -27,12 +27,14 @@ public class EventPrivateController {
     }
     //____________________________Create event start here___________________________________________
     @GetMapping("/my-events/register-event")
+    @PreAuthorize("hasRole('ADMIN')")
     public String getRegisterEventForm(Model model) {
         model.addAttribute("event", new Event());
         return "viewsRegisterForms/registerEventPrivate";
     }
 
     @PostMapping("/my-events/register-success")
+    @PreAuthorize("hasRole('ADMIN')")
     //Refactor later to request not user, but club param
     public String registerEvent(Event event, Model model) {
         Event registeredEvent = eventService.register(event);
@@ -42,6 +44,7 @@ public class EventPrivateController {
     }
 
     @GetMapping("/my-events/event/{id}/update")
+    @PreAuthorize("hasRole('ADMIN')")
     public String updateCompetitionConfiguration(
             @PathVariable(name = "id") Long id, Model model) {
         Event findEvent = eventService.findById(id);
@@ -50,17 +53,23 @@ public class EventPrivateController {
         return "viewsRegisterForms/updateEventConfigurationPrivate";
     }
 
+//____________________________Create event finish here__________________________________________________________________
+
+
+//____________________________Update / delete event start here_________________________________________________________
     @GetMapping("/my-events/event/{id}/delete")
     @PreAuthorize("hasRole('ADMIN')")
     public String deleteEvent(@PathVariable(name = "id") long id) {
         eventService.deleteEvent(id);
         return "redirect:/private/home";
     }
-//____________________________Create event finish here__________________________________________________________________
+
+//____________________________Update / delete event start here__________________________________________________________
 
 
 //____________________________Create configurations start here__________________________________________________________
     @PostMapping("/my-events/event/{id}/update-success")
+    @PreAuthorize("hasRole('ADMIN')")
     public String updateEventConfig(
             @PathVariable(name = "id") Long id, EventConfiguration configurations, Model model) {
         EventConfiguration updatedConfig = eventService.register(configurations);
@@ -74,6 +83,7 @@ public class EventPrivateController {
     }
 
     @PostMapping("/events/event/{user-id}/{configuration-id}/add-user")
+    @PreAuthorize("hasRole('USER')")
     public String addUserToEventConfig(
             @PathVariable(name = "configuration-id") Long configurationId, @PathVariable(name = "user-id") Long userId) {
         User user = userService.findById(userId);

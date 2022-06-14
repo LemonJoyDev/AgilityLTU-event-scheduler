@@ -1,36 +1,44 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head th:replace="fragments/fragmentsHeaderPrivate :: head('agilty | Register user')"></head>
 <body>
-<div th:replace="fragments/fragmentsHeaderPrivate :: menu"></div>
-<div class="center">
-    <h1>Register Dog</h1>
-    <form th:action="@{/private/user/dogs/register-success(userId=${#authentication.getPrincipal().getId()})}" th:object="${dog}" method="post">
-<!--    <form th:action="@{/private/handler/dogs/register-success}" th:object="${dog}" method="post">-->
-        <div>
-            <span>Name: <input type="text" th:field="*{name}"></span>
+<header th:replace="fragments/fragmentsHeaderPrivate :: menu">
+</header>
+<div class="position-absolute top-50 start-50 translate-middle bg-light p-lg-5 border border-dark border-3 rounded"
+     style="--bs-bg-opacity: .7;">
+    <h1 class="p-3">Register Dog</h1>
+    <form class="row g-3 needs-validation" novalidate
+          th:action="@{/private/user/dogs/register-success(userId=${#authentication.getPrincipal().getId()})}"
+          th:object="${dog}" method="post">
+        <!--    <form th:action="@{/private/handler/dogs/register-success}" th:object="${dog}" method="post">-->
+        <div class="col-md-6">
+            <label for="inputName" class="form-label">Name</label>
+            <input type="text" th:field="*{name}" class="form-control" id="inputName" required>
         </div>
-        <div>
-            <span>Breed: <input type="text" th:field="*{breed}"></span>
+        <div class="col-md-6">
+            <label for="inputBreed" class="form-label">Breed</label>
+            <input type="text" th:field="*{breed}" class="form-control" id="inputBreed" required>
         </div>
-        <div>
-            <span>Birth Date: <input type="date" th:field="*{birthDate}"></span>
+        <div class="col-md-6">
+            <label for="inputBirthDate" class="form-label">Birth date</label>
+            <input type="date" th:field="*{birthDate}" class="form-control" id="inputBirthDate" required>
         </div>
-        <div>
-            <span>Last Vaccine Date: <input type="date" th:field="*{vaccineDate}"></span>
+        <div class="col-md-6">
+            <label for="inputVaccineDate" class="form-label">Last vaccine date</label>
+            <input type="date" th:field="*{vaccineDate}" class="form-control" id="inputVaccineDate" required>
         </div>
-        <div>
-            <label>Dog Size:</label>
-
-            <select name="dogSize">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputDogSize">Dog Size:</label>
+            <select name="dogSize" class="form-select" id="inputDogSize" required>
+                <option selected disabled value="">Choose...</option>
                 <option value="small">Small</option>
                 <option value="medium">Medium</option>
                 <option value="large">Large</option>
             </select>
         </div>
-        <div>
-            <label>Level:</label>
-
-            <select name="division">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputLevel">Division level:</label>
+            <select name="division" class="form-select" id="inputLevel" required>
+                <option selected disabled value="">Choose...</option>
                 <option value="a0">A0</option>
                 <option value="a1">A1</option>
                 <option value="a2">A2</option>
@@ -38,24 +46,21 @@
                 <option value="veteran">Veteran</option>
             </select>
         </div>
-        <div>
-            <label>Clean courses count:</label>
-
-            <select name="cleanCourses">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputCleanCoursesCount">Clean courses count:</label>
+            <select name="cleanCourses" class="form-select" id="inputCleanCoursesCount" required>
+                <option selected disabled value="">Choose...</option>
                 <option value="0">None</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
         </div>
-
-        <div>
-            <button type="submit">Register Dog</button>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Register Dog</button>
+            <a class="position-absolute bottom-0 end-0 p-3" th:href="@{/private/home}">Back to Home</a>
         </div>
     </form>
-    <div>
-        <a th:href="@{/private/home}">Back to Home</a>
-    </div>
 </div>
 <div th:replace="/fragments/linksScripts :: links-scripts"></div>
 </body>
